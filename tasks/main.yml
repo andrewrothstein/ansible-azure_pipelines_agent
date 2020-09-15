@@ -1,0 +1,56 @@
+---
+- name: resolve platform specific vars
+  include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: look for {{ azure_pipelines_agent_install_dir }}...
+  become: yes
+  stat:
+    path: '{{ azure_pipelines_agent_install_dir }}'
+  changed_when: False
+  register: azure_pipelines_agent_binary
+- when: not azure_pipelines_agent_binary.stat.exists
+  block:
+    - name: downloading {{ azure_pipelines_agent_url }}...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ azure_pipelines_agent_url }}'
+        dest: /tmp/{{ azure_pipelines_agent_archive }}
+        checksum: '{{ azure_pipelines_agent_checksum }}'
+        mode: 0644
+    - name: mkdir -p {{ azure_pipelines_agent_install_dir }}
+      become: yes
+      become_user: root
+      file:
+        path: '{{ azure_pipelines_agent_install_dir }}'
+        state: directory
+        mode: 0755
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ azure_pipelines_agent_archive }}
+        dest: '{{ azure_pipelines_agent_install_dir }}'
+        creates: '{{ azure_pipelines_agent_install_dir }}/run.sh'
+  always:
+    - name: rm /tmp/{{ azure_pipelines_agent_archive }}
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{ azure_pipelines_agent_archive }}
+        state: absent
+- name: link {{ azure_pipelines_agent_link_dir }} to {{ azure_pipelines_agent_install_dir }}...
+  become: yes
+  become_user: root
+  file:
+    src: '{{ azure_pipelines_agent_install_dir }}'
+    dest: '{{ azure_pipelines_agent_link_dir }}'
+    state: link
