@@ -1,6 +1,6 @@
 andrewrothstein.azure_pipelines_agent
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-azure_pipelines_agent.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-azure_pipelines_agent)
+![Build Status](https://github.com/andrewrothstein/ansible-azure_pipelines_agent/actions/workflows/build.yml/badge.svg)
 
 Installs the [Azure Pipelines Agent](https://github.com/microsoft/azure-pipelines-agent).
 

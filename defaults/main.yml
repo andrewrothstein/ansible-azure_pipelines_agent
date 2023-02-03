@@ -1,8 +1,12 @@
 ---
 # defaults file for azure_pipelines_agent
-azure_pipelines_agent_ver: 2.185.1
-azure_pipelines_agent_os: linux
-azure_pipelines_agent_arch: x64
+azure_pipelines_agent_ver: 2.217.2
+azure_pipelines_agent_arch_map:
+  aarch32: arm
+  aarch64: arm64
+  arm64: arm64
+  x86_32: x32
+  x86_64: x64
 azure_pipelines_agent_archive_type: tar.gz
 azure_pipelines_agent_parent_install_dir: /usr/local
 azure_pipelines_agent_mirror: https://vstsagentpackage.azureedge.net/agent
@@ -37,3 +41,16 @@ azure_pipelines_agent_checksums:
     linux-arm64: sha256:ebca8f5b9d66da3566c627acf2117e07a669de5a281e88b576e130135a83d31c
     # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-rhel.6-x64-2.185.1.tar.gz
     rhel.6-x64: sha256:cdbe1caddacb0e4369c519a9800ce459c6a9df10ede93466dcdc27836915e81d
+  '2.217.2':
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-win-x64-2.217.2.zip
+    win-x64: sha256:eec71184e35c5fcb26ce38229c1870e2408d6b409da793a6db8f262482083a3d
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-win-x86-2.217.2.zip
+    win-x86: sha256:b273efd5a909d5161ab2d2c03edecaee211c2ba8dfdcb3b64c5efd92199a633a
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-osx-x64-2.217.2.tar.gz
+    osx-x64: sha256:d372aebff8eb8563690c0f8b4b3199ea6751f6fd200a09909cb6b4775f452af4
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-x64-2.217.2.tar.gz
+    linux-x64: sha256:4934bc7c4e6e44303dbea924555d553c9ac055c4f5ed1484c9535768bc8a1280
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-arm-2.217.2.tar.gz
+    linux-arm: sha256:d33f471e3ec7400776cc4b90f373c2d3d1508435fdb3da0545d8ff2187c74c6b
+    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-arm64-2.217.2.tar.gz
+    linux-arm64: sha256:3d02e69664fbe79acb7b1b075b146a18541ab1553a02b0fc4abf4f7cf72274fc

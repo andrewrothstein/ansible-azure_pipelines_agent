@@ -1,4 +1,8 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.bash
 - name: resolve platform specific vars
   include_vars: '{{ item }}'
   with_first_found:
@@ -10,15 +14,15 @@
       paths:
         - '{{ role_path }}/vars'
 - name: look for {{ azure_pipelines_agent_install_dir }}...
-  become: yes
+  become: true
   stat:
     path: '{{ azure_pipelines_agent_install_dir }}'
-  changed_when: False
+  changed_when: false
   register: azure_pipelines_agent_binary
 - when: not azure_pipelines_agent_binary.stat.exists
   block:
     - name: downloading {{ azure_pipelines_agent_url }}...
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ azure_pipelines_agent_url }}'
@@ -26,29 +30,29 @@
         checksum: '{{ azure_pipelines_agent_checksum }}'
         mode: 0644
     - name: mkdir -p {{ azure_pipelines_agent_install_dir }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ azure_pipelines_agent_install_dir }}'
         state: directory
         mode: 0755
     - name: unarchive...
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
-        src: /tmp/{{ azure_pipelines_agent_archive }}
+        remote_src: true
+        src: '{{ azure_pipelines_agent_tmp_archive }}'
         dest: '{{ azure_pipelines_agent_install_dir }}'
         creates: '{{ azure_pipelines_agent_install_dir }}/run.sh'
   always:
-    - name: rm /tmp/{{ azure_pipelines_agent_archive }}
-      become: yes
+    - name: rm {{ azure_pipelines_agent_tmp_archive }}
+      become: true
       become_user: root
       file:
-        path: /tmp/{{ azure_pipelines_agent_archive }}
+        path: '{{ azure_pipelines_agent_tmp_archive }}'
         state: absent
 - name: link {{ azure_pipelines_agent_link_dir }} to {{ azure_pipelines_agent_install_dir }}...
-  become: yes
+  become: true
   become_user: root
   file:
     src: '{{ azure_pipelines_agent_install_dir }}'
