@@ -1,6 +1,6 @@
 ---
 # defaults file for azure_pipelines_agent
-azure_pipelines_agent_ver: 2.217.2
+azure_pipelines_agent_ver: 4.253.0
 azure_pipelines_agent_arch_map:
   aarch32: arm
   aarch64: arm64
@@ -11,46 +11,22 @@ azure_pipelines_agent_archive_type: tar.gz
 azure_pipelines_agent_parent_install_dir: /usr/local
 azure_pipelines_agent_mirror: https://vstsagentpackage.azureedge.net/agent
 azure_pipelines_agent_checksums:
-  '2.174.2':
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-win-x64-2.174.2.zip
-    win-x64: sha256:f40fd9e6a622fd63157ed920e23870d4898de355fb14a76b1dd1de2ca8fd2984
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-win-x86-2.174.2.zip
-    win-x86: sha256:b3c3c9c7ffe9b097b2c0a9f88b08d724a52e0b5cf55201bbd1a6a2fc6454bceb
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-osx-x64-2.174.2.tar.gz
-    osx-x64: sha256:f45c01c3b034543560ae2ada48c29c042397657a6b43686cf6d6d86ad17cf7b5
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-linux-x64-2.174.2.tar.gz
-    linux-x64: sha256:39c6e115d01c584d8b909cbb6652ebeba80f9f26aec821aaecc652c034559d7d
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-linux-arm-2.174.2.tar.gz
-    linux-arm: sha256:68c453110d5f78a618e22efab4d66a1922bacc43107028fb7aa31fb4c34f4e72
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-linux-arm64-2.174.2.tar.gz
-    linux-arm64: sha256:852aac17e76f1ee2bb26a82f67e71d19c402edd6681b76160da366bce177e158
-    # https://vstsagentpackage.azureedge.net/agent/2.174.2/vsts-agent-rhel.6-x64-2.174.2.tar.gz
-    rhel.6-x64: sha256:573d39e3c7eb41d8af70c5bddd7417543af8cc7b66714a7e356d8446ab6dd6bd
-  '2.185.1':
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-win-x64-2.185.1.zip
-    win-x64: sha256:f354be845c9b3ab2549bb4185b8f3db4255bc71a5665af57bf6b9a79e86dc5b0
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-win-x86-2.185.1.zip
-    win-x86: sha256:1c8ef79e55231d82b6a08b5a57685674fac678f2d8322e084b10485e1365704e
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-osx-x64-2.185.1.tar.gz
-    osx-x64: sha256:51e20dae4bfb3cd4d9ccd36a68e28b6bbd8389b78b6fa4f6cb6bd9c14e4fb0f7
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-linux-x64-2.185.1.tar.gz
-    linux-x64: sha256:524aff142610b71f3473eeda2b4d48b55666835dc61df54adf02cb6b49c0f97b
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-linux-arm-2.185.1.tar.gz
-    linux-arm: sha256:b14eec3a05ae71b15f02e106420a16f19480c5dcfe281247f6aa030db9a76993
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-linux-arm64-2.185.1.tar.gz
-    linux-arm64: sha256:ebca8f5b9d66da3566c627acf2117e07a669de5a281e88b576e130135a83d31c
-    # https://vstsagentpackage.azureedge.net/agent/2.185.1/vsts-agent-rhel.6-x64-2.185.1.tar.gz
-    rhel.6-x64: sha256:cdbe1caddacb0e4369c519a9800ce459c6a9df10ede93466dcdc27836915e81d
-  '2.217.2':
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-win-x64-2.217.2.zip
-    win-x64: sha256:eec71184e35c5fcb26ce38229c1870e2408d6b409da793a6db8f262482083a3d
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-win-x86-2.217.2.zip
-    win-x86: sha256:b273efd5a909d5161ab2d2c03edecaee211c2ba8dfdcb3b64c5efd92199a633a
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-osx-x64-2.217.2.tar.gz
-    osx-x64: sha256:d372aebff8eb8563690c0f8b4b3199ea6751f6fd200a09909cb6b4775f452af4
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-x64-2.217.2.tar.gz
-    linux-x64: sha256:4934bc7c4e6e44303dbea924555d553c9ac055c4f5ed1484c9535768bc8a1280
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-arm-2.217.2.tar.gz
-    linux-arm: sha256:d33f471e3ec7400776cc4b90f373c2d3d1508435fdb3da0545d8ff2187c74c6b
-    # https://vstsagentpackage.azureedge.net/agent/2.217.2/vsts-agent-linux-arm64-2.217.2.tar.gz
-    linux-arm64: sha256:3d02e69664fbe79acb7b1b075b146a18541ab1553a02b0fc4abf4f7cf72274fc
+  '4.253.0':
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-win-x64-4.253.0.zip
+    win-x64: sha256:aecbff3d911e2634dccda26434eb39752d74ff0595c78814fb219b29baef17f6
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-win-x86-4.253.0.zip
+    win-x86: sha256:3bfb34c73784041844c1fec05b310327d6b2a9a2b4542467a634ac324033afc3
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-osx-x64-4.253.0.tar.gz
+    osx-x64: sha256:68b14466aa28e7b7d120ef574ff2e8387e21bb18c65780f3702297ec6713090d
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-osx-arm64-4.253.0.tar.gz
+    osx-arm64: sha256:649a17e88ae5ac163dc7529b81fd7d201355e8e710fb0688934bc3a5762826db
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-linux-x64-4.253.0.tar.gz
+    linux-x64: sha256:ab4d9b97c0534936a4fc5df4690005859deac834059ce37b23cbf53dc5f5c5ea
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-linux-musl-x64-4.253.0.tar.gz
+    linux-musl-x64: sha256:d416ab7fde68f912e9dc3a82298ca378a809a71164fe17bc1d67b4848380bfde
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-linux-arm-4.253.0.tar.gz
+    linux-arm: sha256:252c14b2382dac2bf573be14fc4320f92fefa535af2dfd98dc85b1fb8416f69c
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-linux-arm64-4.253.0.tar.gz
+    linux-arm64: sha256:d26c9bc31f5611f1015a02e417e33b68d4f48eb02fbbe199ddd70ce6b42993b1
+    # https://vstsagentpackage.azureedge.net/agent/4.253.0/vsts-agent-linux-musl-arm64-4.253.0.tar.gz
+    linux-musl-arm64: sha256:4e117b161a6500806f79d0377b9e63f5303f381726a234c2901826978d7c82a3

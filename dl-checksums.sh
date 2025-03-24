@@ -31,10 +31,13 @@ dl_ver() {
     dl $ver win x64 zip
     dl $ver win x86 zip
     dl $ver osx x64
+    dl $ver osx arm64
     dl $ver linux x64
+    dl $ver linux musl-x64
     dl $ver linux arm
     dl $ver linux arm64
+    dl $ver linux musl-arm64
 }
 
 # https://github.com/microsoft/azure-pipelines-agent/releases
-dl_ver ${1:-2.217.2}
+dl_ver ${1:-4.253.0}

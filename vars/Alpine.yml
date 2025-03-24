@@ -1,0 +1,4 @@
+---
+azure_pipelines_agent_arch_map:
+  aarch64: musl-arm64
+  x86_64: musl-x64

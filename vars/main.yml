@@ -8,4 +8,4 @@ azure_pipelines_agent_tmp_archive: '{{ azure_pipelines_agent_tmpdir | default("/
 azure_pipelines_agent_url: '{{ azure_pipelines_agent_mirror }}/{{ azure_pipelines_agent_ver }}/{{ azure_pipelines_agent_archive }}'
 azure_pipelines_agent_checksum: '{{ azure_pipelines_agent_checksums[azure_pipelines_agent_ver][azure_pipelines_agent_platform] }}'
 azure_pipelines_agent_install_dir: '{{ azure_pipelines_agent_parent_install_dir }}/vsts-agent-{{ azure_pipelines_agent_ver }}'
-azure_pipelines_agent_link_dir: '{{ azure_pipelines_agent_parent_install_dir}}/vsts-agent'
+azure_pipelines_agent_link_dir: '{{ azure_pipelines_agent_parent_install_dir }}/vsts-agent'

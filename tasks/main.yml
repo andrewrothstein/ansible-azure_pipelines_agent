@@ -1,10 +1,12 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- include_role:
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- name: Installing andrewrothstein.bash
+  ansible.builtin.include_role:
     name: andrewrothstein.bash
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -13,48 +15,49 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: look for {{ azure_pipelines_agent_install_dir }}...
+- name: Look for {{ azure_pipelines_agent_install_dir }}...
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ azure_pipelines_agent_install_dir }}'
   changed_when: false
   register: azure_pipelines_agent_binary
-- when: not azure_pipelines_agent_binary.stat.exists
+- name: Downloading and installing the azure pipelines agent
+  when: not azure_pipelines_agent_binary.stat.exists
   block:
-    - name: downloading {{ azure_pipelines_agent_url }}...
+    - name: Downloading {{ azure_pipelines_agent_url }}...
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ azure_pipelines_agent_url }}'
-        dest: /tmp/{{ azure_pipelines_agent_archive }}
+        dest: '{{ azure_pipelines_agent_tmp_archive }}'
         checksum: '{{ azure_pipelines_agent_checksum }}'
-        mode: 0644
-    - name: mkdir -p {{ azure_pipelines_agent_install_dir }}
+        mode: '644'
+    - name: Mkdir -p {{ azure_pipelines_agent_install_dir }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ azure_pipelines_agent_install_dir }}'
         state: directory
-        mode: 0755
-    - name: unarchive...
+        mode: '755'
+    - name: Unarchive...
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ azure_pipelines_agent_tmp_archive }}'
         dest: '{{ azure_pipelines_agent_install_dir }}'
         creates: '{{ azure_pipelines_agent_install_dir }}/run.sh'
   always:
-    - name: rm {{ azure_pipelines_agent_tmp_archive }}
+    - name: Rm -f {{ azure_pipelines_agent_tmp_archive }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ azure_pipelines_agent_tmp_archive }}'
         state: absent
-- name: link {{ azure_pipelines_agent_link_dir }} to {{ azure_pipelines_agent_install_dir }}...
+- name: Link {{ azure_pipelines_agent_link_dir }} to {{ azure_pipelines_agent_install_dir }}...
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ azure_pipelines_agent_install_dir }}'
     dest: '{{ azure_pipelines_agent_link_dir }}'
     state: link
